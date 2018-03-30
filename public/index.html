@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="Mapd">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <title></title>
+  </head>
+  <body ng-controller="MainController as ctrl">
+    {{ctrl.hi}}
+
+    <ul ng-repeat="map in ctrl.maps">
+      <li>{{map.name}}: {{map.description}}</li>
+    </ul>
+
+    <form ng-submit="ctrl.createMap()">
+      <input ng-model="ctrl.name" type="text" placeholder="Name">
+      <input ng-model="ctrl.description" type="text" placeholder="Description">
+      <input ng-model="ctrl.lat" type="text" placeholder="Latitude">
+      <input ng-model="ctrl.long" type="text" placeholder="Longitude">
+      <input type="submit" name="" value="Create Map">
+    </form>
+
+  </body>
+</html>
