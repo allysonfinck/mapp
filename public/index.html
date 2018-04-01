@@ -2,12 +2,16 @@
 <html ng-app="Mapd">
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <title></title>
   </head>
   <body ng-controller="MainController as ctrl">
     {{ctrl.hi}}
+
 
     <ul ng-repeat="map in ctrl.maps">
       <li>{{map.name}}: {{map.description}}</li>
