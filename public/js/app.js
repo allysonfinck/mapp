@@ -1,37 +1,41 @@
-const app = angular.module("Mapd", []);
+const app = angular.module("MovieApp", []);
 
-app.controller("MainController", ['$http', function($http){
-  const controller = this;
-  this.maps = [];
+app.controller("MainController", ["$http", function($http){
+    this.appName = "MyMovies";
 
-  this.createMap = ()=>{
-    $http({
-      method: 'POST',
-      url: '/maps',
-      data: {
-        name: this.name,
-        description: this.description,
-        lat: this.lat,
-        long: this.long
-      }
-    }).then((response)=>{
-      controller.getMaps();
-    }, ()=>{
-      console.log('error');
-    })
-  }
+    this.baseURL = "http://www.omdbapi.com/?";
+    this.apikey = "apikey=" + "dc292b86";
+    this.query = "s=";
+    // this.movies = "";
+    this.searchURL = this.baseURL + this.apikey + "&" + this.query;
 
-  this.getMaps = ()=>{
-    $http({
-      method: 'GET',
-      url: '/maps'
-    }).then((response)=>{
-      controller.maps = response.data;
-    }, (error)=>{
-      console.log('error');
-    })
-  }
+    // console.log(this.searchURL);
 
-  this.getMaps();
+    this.movies = [];
 
-}])
+     this.getMovies = ()=>{
+       $http({
+         method: 'GET',
+         url: this.searchURL + this.movieTitle
+       }).then((response) =>{
+         this.movies = response.data.Search;
+         console.log(this.movies);
+       }, (error)=>{
+         console.error(error);
+       }).catch((err)=>console.error('Catch: ', err));
+     }
+
+     this.movie = [];
+
+     this.getMovie = ()=>{
+       $http({
+         method: 'GET',
+         url: this.searchURL + this.movieTitle
+       }).then((response)=>{
+         this.movie = [response.data];
+       }, (error)=>{
+         console.error(error);
+       }).catch((err)=>console.error('Catch: ', err));
+     }
+
+}]); //closes app.controller

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="Mapd">
-  <head>
+<html ng-app="MovieApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -8,22 +11,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <title></title>
-  </head>
-  <body ng-controller="MainController as ctrl">
-    {{ctrl.hi}}
+</head>
+
+<body ng-controller="MainController as ctrl">
+
+    <h1>Welcome to {{ctrl.appName}}</h1>
+
+    <div class="findMovie">
+      <form ng-submit="ctrl.getMovies()">
+          <input type="text" placeholder="movie title" ng-model="ctrl.movieTitle">
+          <button class ="waves-effect waves-light btn" type="submit">FIND MOVIE</button>
+      </form>
+    </div>
 
 
-    <ul ng-repeat="map in ctrl.maps">
-      <li>{{map.name}}: {{map.description}}</li>
-    </ul>
+    <div class="movieGrid">
+      <div ng-repeat="movie in ctrl.movies" class="movieCard">
+          <!-- {{ctrl.movies}} -->
+          <h5>{{movie.Title}}, {{movie.Year}}</h5>
+              <img ng-src="{{movie.Poster}}" alt="{{movie.name}}">
+              <!-- <h2>Starring: {{movie.Actors}}</h2>
+              <h4>Plot: {{movie.Plot}}</h4>
+              <h5>Genre: {{movie.Genre}}</h5>
+              <h6>Rated: {{movie.Rated}}</h6> -->
+      </div>
+    </div>
 
-    <form ng-submit="ctrl.createMap()">
-      <input ng-model="ctrl.name" type="text" placeholder="Name">
-      <input ng-model="ctrl.description" type="text" placeholder="Description">
-      <input ng-model="ctrl.lat" type="text" placeholder="Latitude">
-      <input ng-model="ctrl.long" type="text" placeholder="Longitude">
-      <input type="submit" name="" value="Create Map">
-    </form>
+</body>
 
-  </body>
 </html>
