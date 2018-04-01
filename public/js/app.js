@@ -1,6 +1,6 @@
 const app = angular.module("MovieApp", []);
 
-app.controller("MainController", ["$http", function($http){
+app.controller("MainController", ["$http", function($http) {
     this.appName = "MyMovies";
 
     this.baseURL = "http://www.omdbapi.com/?";
@@ -13,29 +13,48 @@ app.controller("MainController", ["$http", function($http){
 
     this.movies = [];
 
-     this.getMovies = ()=>{
-       $http({
-         method: 'GET',
-         url: this.searchURL + this.movieTitle
-       }).then((response) =>{
-         this.movies = response.data.Search;
-         console.log(this.movies);
-       }, (error)=>{
-         console.error(error);
-       }).catch((err)=>console.error('Catch: ', err));
-     }
+    this.getMovies = () => {
+        $http({
+            method: 'GET',
+            url: this.searchURL + this.movieTitle
+        }).then((response) => {
+            this.movies = response.data.Search;
+            console.log(this.movies);
+        }, (error) => {
+            console.error(error);
+        }).catch((err) => console.error('Catch: ', err));
+    }
 
-     this.movie = [];
+    // this.movie = [];
 
-     this.getMovie = ()=>{
-       $http({
-         method: 'GET',
-         url: this.searchURL + this.movieTitle
-       }).then((response)=>{
-         this.movie = [response.data];
-       }, (error)=>{
-         console.error(error);
-       }).catch((err)=>console.error('Catch: ', err));
-     }
+    // this.getMovie = () => {
+    //     $http({
+    //         method: 'GET',
+    //         url: this.searchURL + this.movieTitle
+    //     }).then((response) => {
+    //         this.movie = [response.data];
+    //     }, (error) => {
+    //         console.error(error);
+    //     }).catch((err) => console.error('Catch: ', err));
+    // }
+
+    this.myMovies = [];
+
+    this.addMovie = (movie) => {
+        $http({
+            method: "POST",
+            url: "/movies",
+            data: {
+                name: movie.Title,
+                year: movie.Year,
+                poster: movie.Poster
+            }
+        }).then((response) => {
+            this.myMovies = response.data
+            console.log(this.myMovies);
+        }, () => {
+            console.log("error");
+        })
+    }
 
 }]); //closes app.controller

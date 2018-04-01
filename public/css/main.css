@@ -23,6 +23,6 @@ h1 {
 }
 
 .movieCard {
-  max-width: 30vw;
+  width: 30vw;
   height: auto;
 }

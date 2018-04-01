@@ -10,8 +10,8 @@ router.get('/', (req, res)=>{
 })
 
 router.post('/', (req, res)=>{
-  Movies.create(req.body, (err, createdMovie)=>{
-    res.json(createdMovie);
+  Movies.create(req.body, (err, createdMovies)=>{
+    res.json(createdMovies);
   })
 })
 
