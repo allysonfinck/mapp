@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html ng-app="Mapd">
-  <head>
+<html ng-app="MovieApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" charset="utf-8"></script>
-    <script src="/js/app.js" charset="utf-8"></script>
     <title></title>
-  </head>
-  <body ng-controller="MainController as ctrl">
-    {{ctrl.hi}}
+</head>
 
-    <ul ng-repeat="map in ctrl.maps">
-      <li>{{map.name}}: {{map.description}}</li>
-    </ul>
+<body ng-controller="MainController as ctrl">
 
-    <form ng-submit="ctrl.createMap()">
-      <input ng-model="ctrl.name" type="text" placeholder="Name">
-      <input ng-model="ctrl.description" type="text" placeholder="Description">
-      <input ng-model="ctrl.lat" type="text" placeholder="Latitude">
-      <input ng-model="ctrl.long" type="text" placeholder="Longitude">
-      <input type="submit" name="" value="Create Map">
+    <h1>Welcome to {{ctrl.appName}}</h1>
+
+    <form ng-submit="ctrl.getMovies()">
+        <input type="text" placeholder="movie title" ng-model="ctrl.movieTitle">
+        <button type="submit">FIND MOVIE</button>
     </form>
 
-  </body>
+    <div ng-repeat="movie in ctrl.movies">
+        <!-- {{ctrl.movies}} -->
+        <h2>{{movie.Title}}, {{movie.Year}}</h2>
+            <img ng-src="{{movie.Poster}}" alt="{{movie.name}}">
+            <!-- <h2>Starring: {{movie.Actors}}</h2>
+            <h4>Plot: {{movie.Plot}}</h4>
+            <h5>Genre: {{movie.Genre}}</h5>
+            <h6>Rated: {{movie.Rated}}</h6> -->
+    </div>
+
+</body>
+
 </html>

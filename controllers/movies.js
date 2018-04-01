@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const Maps = require('../models/maps.js');
+const Movies = require('../models/movies.js');
 
 
 router.get('/', (req, res)=>{
-  Maps.find({}, (err, foundMaps)=>{
+  Movies.find({}, (err, foundMaps)=>{
     res.json(foundMaps);
   })
 })
 
 router.post('/', (req, res)=>{
-  Maps.create(req.body, (err, createdMap)=>{
+  Movies.create(req.body, (err, createdMap)=>{
     res.json(createdMap);
   })
 })
