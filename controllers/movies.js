@@ -4,14 +4,14 @@ const Movies = require('../models/movies.js');
 
 
 router.get('/', (req, res)=>{
-  Movies.find({}, (err, foundMaps)=>{
-    res.json(foundMaps);
+  Movies.find({}, (err, foundMovies)=>{
+    res.json(foundMovies);
   })
 })
 
 router.post('/', (req, res)=>{
-  Movies.create(req.body, (err, createdMap)=>{
-    res.json(createdMap);
+  Movies.create(req.body, (err, createdMovies)=>{
+    res.json(createdMovies);
   })
 })
 

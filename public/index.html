@@ -20,7 +20,10 @@
     <div ng-repeat="movie in ctrl.movies">
         <!-- {{ctrl.movies}} -->
         <h2>{{movie.Title}}, {{movie.Year}}</h2>
-            <img ng-src="{{movie.Poster}}" alt="{{movie.name}}">
+            <img ng-src="{{movie.Poster}}" alt="{{movie.name}}"><br/>
+            <form ng-submit="ctrl.addMovie(movie)">
+                <input type="submit" value="Add Movie">
+            </form>
             <!-- <h2>Starring: {{movie.Actors}}</h2>
             <h4>Plot: {{movie.Plot}}</h4>
             <h5>Genre: {{movie.Genre}}</h5>
