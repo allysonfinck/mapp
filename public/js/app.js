@@ -50,7 +50,8 @@ app.controller("MainController", ["$http", function($http) {
                 poster: movie.Poster
             }
         }).then((response) => {
-            this.myMovies = response.data
+            // this.myMovies = response.data
+            this.myMovies.push(response.data)
             console.log(this.myMovies);
         }, () => {
             console.log("error");
